@@ -1,5 +1,5 @@
 function [G,r] = crsroot(A)
-% function G = crsroot(A) 
+% function G = crsroot(A); 
 % Compute the square root of quasi-Toeplitz M-matrix A by Cyclic reduction
 verb = true; maxit = 1000; epsi = 1.e-14;  cqtoption('threshold',10^(-15))
 I = cqt( 1, 1 );
@@ -15,7 +15,7 @@ for k=1:maxit
     Z    =  Zold + 2 * Y;
     
     errold = err;
-    err    = norm( Z^2 - 16 * A, inf );
+    err    = norm( 1/16*Z^2 - A, inf )/norm( A, inf );
     
     
     
